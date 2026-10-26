@@ -13,7 +13,7 @@ stack_targ <- function(nm) {
   out
 }
 
-files <- sort(list.files(save_dir, "3e4_aov_mc_res_\\d+.*$", full.names = TRUE))
+files <- sort(list.files(save_dir, "aov_mc_res_\\d+.*$", full.names = TRUE))
  parts <- lapply(files, readRDS)
 n_cond_total <- sum(vapply(parts, function(p) ncol(p$b_cont_err), integer(1)))
  cond_nm      <- sprintf("cond_%03d", seq_len(n_cond_total))

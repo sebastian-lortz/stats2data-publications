@@ -450,7 +450,7 @@ cat("Simulation starting...\n\n")
 # AOV
 aov_mc_res <- sim_optim_aov_mc(n = 75, n.cond = 500/n.jobs, tol = 0.005, dec = 2, R = 100, seed = seed)
 
-saveRDS(aov_mc_res, file.path(save_dir, sprintf("3e4_aov_mc_res_%03d", job)))
+saveRDS(aov_mc_res, file.path(save_dir, sprintf("aov_mc_res_%03d", job)))
 cat("AOV module done!\n\n")
 
 
