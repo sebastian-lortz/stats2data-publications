@@ -1,8 +1,12 @@
 ### Simulation Study from the manuscript
 # HPC
-# 72 hours
-# 108 cores
-# 100GB
+#!/bin/bash
+#SBATCH --time=12:00:00
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=38
+#SBATCH --job-name=aov.batch.R
+#SBATCH --mem=30G
+#SBATCH --array=1-100
 
 #### configs ####
 options(repos = c(CRAN = "https://ftp.belnet.be/mirror/CRAN/"))
@@ -26,9 +30,9 @@ if (INSTALL) {
 }
 
 # set root_dir
-root_dir <- if (HPC) "/home4/p310779/stats2data" else "/Users/lortz/Desktop/PhD/Research/simdata/stats2data"
+root_dir <- if (HPC) "/home4/p310779/stats2data/data-raw" else "/Users/lortz/Desktop/PhD/Research/simdata/stats2data-publications"
 
- save_dir <- file.path(root_dir, "data-raw", "results")
+save_dir <- file.path(root_dir,"results")
 dir.create(save_dir, recursive = TRUE, showWarnings = FALSE)
 
 seed     <- 310779 + job
@@ -456,7 +460,7 @@ if (!HPC) {
   ##### 1. Setup #####
    options(scipen = 50)
 
-  source(file.path(root_dir, "data-raw", "plot_theme.R"))
+  source(file.path(root_dir, "plot_theme.R"))
 
   # thresholds
   TOL_ABS <- 0.005   # convergence
@@ -783,11 +787,11 @@ if (!HPC) {
 
 
   ##### 5. Save #####
-  ggsave("data-raw/plots/comb_heat_aov.pdf", comb_heat_aov,
+  ggsave("plots/comb_heat_aov.pdf", comb_heat_aov,
          width = 4, height = 3.8, units = "in", bg = "white", dpi = 300)
-   ggsave("data-raw/plots/sim_aov.pdf",       fig_main,
+   ggsave("plots/sim_aov.pdf",       fig_main,
          width = 6.5, height = 6.1, units = "in", bg = "white", dpi = 300)
-  ggsave("data-raw/plots/aov_example.pdf",   aov_example,
+  ggsave("plots/aov_example.pdf",   aov_example,
          width = 6.5, height = 4.5, units = "in", bg = "white", dpi = 300)
 }
 

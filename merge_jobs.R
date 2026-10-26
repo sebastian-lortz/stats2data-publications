@@ -1,7 +1,7 @@
 ### Merge AOV job results into a single object
 
-root_dir <- "/Users/lortz/Desktop/PhD/Research/simdata/stats2data"
-save_dir <- file.path(root_dir, "data-raw", "results")
+root_dir <- "/Users/lortz/Desktop/PhD/Research/simdata/stats2data-publications"
+save_dir <- file.path(root_dir, "results")
 
 # helper
 stack_targ <- function(nm) {

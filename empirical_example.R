@@ -7,8 +7,8 @@ library(patchwork)
 options(scipen = 50)
 
 # out dir
-fig_dir <- file.path("data-raw", "plots")
-res_dir <- file.path("data-raw", "results")
+fig_dir <- file.path("plots")
+res_dir <- file.path("results")
 dir.create(fig_dir, recursive = TRUE, showWarnings = FALSE)
 dir.create(res_dir, recursive = TRUE, showWarnings = FALSE)
 

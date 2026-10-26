@@ -1,8 +1,11 @@
 ### Simulation Study from the manuscript
-# HPC results
-# 8 hours
-# 38 cores
-# 15GB
+# HPC 
+#!/bin/bash
+#SBATCH --time=24:00:00
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=38
+#SBATCH --job-name=mlr.stats2data.R
+#SBATCH --mem=50G
 
 #### configs ####
 options(repos = c(CRAN = "https://ftp.belnet.be/mirror/CRAN/"))
@@ -23,9 +26,9 @@ if (HPC) {
 }
 
 # set root_dir
-root_dir <- if (HPC) "/home4/p310779/stats2data" else "/Users/lortz/Desktop/PhD/Research/simdata/stats2data"
+root_dir <- if (HPC) "/home4/p310779/stats2data/data-raw" else "/Users/lortz/Desktop/PhD/Research/simdata/stats2data-publications"
 
-save_dir <- file.path(root_dir, "data-raw", "results")
+save_dir <- file.path(root_dir, "results")
 dir.create(save_dir, recursive = TRUE, showWarnings = FALSE)
 
 seed     <- 310779
@@ -645,7 +648,7 @@ if (!HPC) {
   ##### 1. Setup #####
   options(scipen = 50)
 
-  source(file.path(root_dir, "data-raw", "plot_theme.R"))
+  source(file.path(root_dir, "plot_theme.R"))
 
   # variance partition
   partition_one <- function(err_vec, condition) {
@@ -1200,21 +1203,21 @@ exp_pts <- data.frame(
 
 
   ##### 5. Save #####
-  ggsave("data-raw/plots/empty_plane.pdf",   empty_plane,
+  ggsave("plots/empty_plane.pdf",   empty_plane,
          width = 6.5, height = 2.6, units = "in", bg = "white", dpi = 300)
-  ggsave("data-raw/plots/comb_plane.pdf",    comb_plane,
+  ggsave("plots/comb_plane.pdf",    comb_plane,
          width = 6.5, height = 2.6, units = "in", bg = "white", dpi = 300)
-   ggsave("data-raw/plots/comb_heat_vec.pdf", comb_heat_vec,
+   ggsave("plots/comb_heat_vec.pdf", comb_heat_vec,
          width = 6.5, height = 3.3, units = "in", bg = "white", dpi = 300)
-  ggsave("data-raw/plots/comb_heat_mlr.pdf", comb_heat_mlr,
+  ggsave("plots/comb_heat_mlr.pdf", comb_heat_mlr,
          width = 6.5, height = 3.3, units = "in", bg = "white", dpi = 300)
-  ggsave("data-raw/plots/sim_mlr.pdf",       fig_main,
+  ggsave("plots/sim_mlr.pdf",       fig_main,
          width = 6.5, height = 4.5, units = "in", bg = "white", dpi = 300)
-   ggsave("data-raw/plots/vec_example.pdf",   vec_example,
+   ggsave("plots/vec_example.pdf",   vec_example,
          width = 6.5, height = 2.5, units = "in", bg = "white", dpi = 300)
-  ggsave("data-raw/plots/mlr_example.pdf",   mlr_example,
+  ggsave("plots/mlr_example.pdf",   mlr_example,
          width = 6.5, height = 4.5, units = "in", bg = "white", dpi = 300)
-  ggsave("data-raw/plots/comb_heat_example.pdf", comb_heat_example,
+  ggsave("plots/comb_heat_example.pdf", comb_heat_example,
          width = 6.5, height = 5.6, units = "in", bg = "white", dpi = 300)
 }
 

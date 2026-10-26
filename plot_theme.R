@@ -4,7 +4,7 @@ library(ggplot2)
 library(patchwork)
 library(dplyr)
 
-moment_plane_file <- "/Users/lortz/Desktop/PhD/Research/simdata/stats2data/data-raw/moment_plane_graph.R"
+moment_plane_file <- "/Users/lortz/Desktop/PhD/Research/simdata/stats2data-publications/moment_plane_graph.R"
 if (!exists("cullen_frey_template") && file.exists(moment_plane_file)) {
   source(moment_plane_file)
 }
