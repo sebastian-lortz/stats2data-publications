@@ -30,7 +30,7 @@ if (INSTALL) {
 }
 
 # set root_dir
-root_dir <- if (HPC) "/home4/p310779/stats2data/data-raw" else "/Users/lortz/Desktop/PhD/Research/simdata/stats2data-publications"
+root_dir <- if (HPC) "/home4/p310779/stats2data-publications" else "/Users/lortz/Desktop/PhD/Research/simdata/stats2data-publications"
 
 save_dir <- file.path(root_dir,"results")
 dir.create(save_dir, recursive = TRUE, showWarnings = FALSE)
